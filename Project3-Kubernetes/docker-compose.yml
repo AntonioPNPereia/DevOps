@@ -1,0 +1,18 @@
+version: '3'
+services:
+
+  webserver:
+    image: webserver-image:latest
+    build:
+      context: ./webserver/
+      dockerfile: Dockerfile
+    volumes:
+      - "./webserver/website:/var/www/html"
+    
+  mysql:
+    image: mysql-image:latest
+    build:
+      context: ./mysql/
+      dockerfile: Dockerfile
+    volumes:
+      - "./mysql:/docker-entrypoint-initdb.d"
